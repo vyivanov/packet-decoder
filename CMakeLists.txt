@@ -8,6 +8,7 @@ set(INC inc/data-reader/iface.hpp
         inc/packet-decoder/base.hpp
         inc/packet-decoder/ethernet.hpp
         inc/packet-decoder/ip.hpp
+        inc/packet-decoder/simba.hpp
         inc/packet-decoder/udp.hpp
         inc/utils.hpp)
 
@@ -16,6 +17,7 @@ set(SRC src/data-reader/local-file.cpp
         src/packet-decoder/base.cpp
         src/packet-decoder/ethernet.cpp
         src/packet-decoder/ip.cpp
+        src/packet-decoder/simba.cpp
         src/packet-decoder/udp.cpp)
 
 add_executable(${PROJECT_NAME} ${INC} ${SRC} main.cpp)
