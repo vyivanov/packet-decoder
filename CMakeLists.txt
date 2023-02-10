@@ -4,7 +4,8 @@ project(packet-decoder LANGUAGES CXX)
 set(INC inc/data-reader/iface.hpp
         inc/data-reader/local-file.hpp
         inc/format-dissector/iface.hpp
-        inc/format-dissector/pcap.hpp)
+        inc/format-dissector/pcap.hpp
+        inc/utils.hpp)
 
 set(SRC src/data-reader/local-file.cpp
         src/format-dissector/pcap.cpp)
