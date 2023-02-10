@@ -1,11 +1,12 @@
 #include <cassert>
 #include <cstdio>
 #include <memory>
+#include <utility>
 
 #include "data-reader/iface.hpp"
 #include "data-reader/local-file.hpp"
 #include "format-dissector/iface.hpp"
-
+#include "format-dissector/pcap.hpp"
 
 int main(int argc, char** argv)
 {
@@ -18,10 +19,12 @@ int main(int argc, char** argv)
     const auto path = argv[1];
 
     Pkt::DataReader::Ptr file = std::make_unique<Pkt::LocalFileReader>(path);
-    [[maybe_unused]] auto tmp = Pkt::FormatDissector::Ptr{};
+    Pkt::FormatDissector::Ptr pcap = std::make_unique<Pkt::PcapFormatDissector>(std::move(file));
 
-    auto chunk = decltype(file->nextChunk({})){};
-    while ((chunk = file->nextChunk(512))) {
-        assert(chunk);
+    assert(pcap);
+    auto packet = decltype(pcap->nextPacket()){};
+
+    while ((packet = pcap->nextPacket())) {
+        assert(packet);
     }
 }

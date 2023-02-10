@@ -3,9 +3,11 @@ project(packet-decoder LANGUAGES CXX)
 
 set(INC inc/data-reader/iface.hpp
         inc/data-reader/local-file.hpp
-        inc/format-dissector/iface.hpp)
+        inc/format-dissector/iface.hpp
+        inc/format-dissector/pcap.hpp)
 
-set(SRC src/data-reader/local-file.cpp)
+set(SRC src/data-reader/local-file.cpp
+        src/format-dissector/pcap.cpp)
 
 add_executable(${PROJECT_NAME} ${INC} ${SRC} main.cpp)
 target_compile_options(${PROJECT_NAME} PRIVATE -std=c++20 -Wall -Wextra -Wpedantic -Werror)
