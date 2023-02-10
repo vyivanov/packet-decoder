@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 3.18)
 project(packet-decoder LANGUAGES CXX)
 
 set(INC inc/data-reader/iface.hpp
-        inc/data-reader/local-file.hpp)
+        inc/data-reader/local-file.hpp
+        inc/format-dissector/iface.hpp)
 
 set(SRC src/data-reader/local-file.cpp)
 

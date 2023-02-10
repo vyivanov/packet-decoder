@@ -4,6 +4,7 @@
 
 #include "data-reader/iface.hpp"
 #include "data-reader/local-file.hpp"
+#include "format-dissector/iface.hpp"
 
 
 int main(int argc, char** argv)
@@ -17,6 +18,7 @@ int main(int argc, char** argv)
     const auto path = argv[1];
 
     Pkt::DataReader::Ptr file = std::make_unique<Pkt::LocalFileReader>(path);
+    [[maybe_unused]] auto tmp = Pkt::FormatDissector::Ptr{};
 
     auto chunk = decltype(file->nextChunk({})){};
     while ((chunk = file->nextChunk(512))) {
