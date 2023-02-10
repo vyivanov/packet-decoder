@@ -1,6 +1,11 @@
+#include <memory>
+
 #include "data-reader/iface.hpp"
+#include "data-reader/local-file.hpp"
+
 
 int main()
 {
-    [[maybe_unused]] auto tmp = Pkt::DataReader::Ptr{};
+    Pkt::DataReader::Ptr tmp = std::make_unique<Pkt::LocalFileReader>("");
+    tmp->nextChunk({});
 }
