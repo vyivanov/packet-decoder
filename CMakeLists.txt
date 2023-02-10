@@ -6,11 +6,13 @@ set(INC inc/data-reader/iface.hpp
         inc/format-dissector/iface.hpp
         inc/format-dissector/pcap.hpp
         inc/packet-decoder/base.hpp
+        inc/packet-decoder/ethernet.hpp
         inc/utils.hpp)
 
 set(SRC src/data-reader/local-file.cpp
         src/format-dissector/pcap.cpp
-        src/packet-decoder/base.cpp)
+        src/packet-decoder/base.cpp
+        src/packet-decoder/ethernet.cpp)
 
 add_executable(${PROJECT_NAME} ${INC} ${SRC} main.cpp)
 target_compile_options(${PROJECT_NAME} PRIVATE -std=c++20 -Wall -Wextra -Wpedantic -Werror)
