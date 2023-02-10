@@ -15,6 +15,9 @@ public:
     explicit PacketDecoder(Packet data);
     std::optional<Payload> payload();
     virtual ~PacketDecoder() noexcept = default;
+protected:
+    std::unique_ptr<PacketDecoder> m_delegator = {};
+    std::optional<Packet> m_packet = {};
 private:
     virtual std::optional<Payload> payloadImpl() = 0;
 };
