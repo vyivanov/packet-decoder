@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.18)
 project(packet-decoder LANGUAGES CXX)
+find_package(nlohmann_json REQUIRED)
 
 set(INC inc/data-reader/iface.hpp
         inc/data-reader/local-file.hpp
@@ -23,3 +24,4 @@ set(SRC src/data-reader/local-file.cpp
 add_executable(${PROJECT_NAME} ${INC} ${SRC} main.cpp)
 target_compile_options(${PROJECT_NAME} PRIVATE -std=c++20 -Wall -Wextra -Wpedantic -Werror)
 target_include_directories(${PROJECT_NAME} PRIVATE inc/)
+target_link_libraries(${PROJECT_NAME} PRIVATE nlohmann_json::nlohmann_json)
